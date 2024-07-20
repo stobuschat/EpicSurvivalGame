@@ -1,6 +1,6 @@
-
-#include "STypes.generated.h"
 #pragma once
+#include "Engine/DamageEvents.h"
+#include "STypes.generated.h"
 
 
 

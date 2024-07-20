@@ -68,7 +68,7 @@ void ASCoopGameMode::RestartPlayer(class AController* NewPlayer)
 			APawn* ResultPawn = GetWorld()->SpawnActor<APawn>(GetDefaultPawnClassForController(NewPlayer), StartLocation.Location, StartRotation, SpawnInfo);
 			if (ResultPawn == nullptr)
 			{
-				UE_LOG(LogGameMode, Warning, TEXT("Couldn't spawn Pawn of type %s at %s"), *GetNameSafe(DefaultPawnClass), &StartLocation.Location);
+				UE_LOG(LogGameMode, Warning, TEXT("Couldn't spawn Pawn of type %s at %s"), *GetNameSafe(DefaultPawnClass), *StartLocation.Location.ToString());
 			}
 			NewPlayer->SetPawn(ResultPawn);
 		}
