@@ -2,59 +2,65 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "AIController.h"
+#include "CoreMinimal.h"
 #include "SurvivalGame/STypes.h"
+
 #include "SZombieAIController.generated.h"
 
 class UBehaviorTreeComponent;
 class ASBaseCharacter;
 
 /**
- * 
+ *
  */
 UCLASS()
 class SURVIVALGAME_API ASZombieAIController : public AAIController
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
-	ASZombieAIController();
+    ASZombieAIController();
 
-	/* Called whenever the controller possesses a character bot */
-	virtual void OnPossess(class APawn* InPawn) override;
+    /* Called whenever the controller possesses a character bot */
+    virtual void OnPossess(class APawn* InPawn) override;
 
-	virtual void OnUnPossess() override;
+    virtual void OnUnPossess() override;
 
-	UBehaviorTreeComponent* BehaviorComp;
+    UBehaviorTreeComponent* BehaviorComp;
 
-	UBlackboardComponent* BlackboardComp;
+    UBlackboardComponent* BlackboardComp;
 
-	UPROPERTY(EditDefaultsOnly, Category = "AI")
-	FName TargetEnemyKeyName;
+    UPROPERTY(EditDefaultsOnly, Category = "AI")
+    FName TargetEnemyKeyName;
 
-	UPROPERTY(EditDefaultsOnly, Category = "AI")
-	FName PatrolLocationKeyName;
+    UPROPERTY(EditDefaultsOnly, Category = "AI")
+    FName PatrolLocationKeyName;
 
-	UPROPERTY(EditDefaultsOnly, Category = "AI")
-	FName CurrentWaypointKeyName;
+    UPROPERTY(EditDefaultsOnly, Category = "AI")
+    FName CurrentWaypointKeyName;
 
-	UPROPERTY(EditDefaultsOnly, Category = "AI")
-	FName BotTypeKeyName;
+    UPROPERTY(EditDefaultsOnly, Category = "AI")
+    FName BotTypeKeyName;
 
 public:
+    AActor* GetWaypoint() const;
 
-	AActor* GetWaypoint() const;
+    ASBaseCharacter* GetTargetEnemy() const;
 
-	ASBaseCharacter* GetTargetEnemy() const;
+    void SetWaypoint(AActor* NewWaypoint);
 
-	void SetWaypoint(AActor* NewWaypoint);
+    void SetTargetEnemy(APawn* NewTarget);
 
-	void SetTargetEnemy(APawn* NewTarget);
+    void SetBlackboardBotType(EBotBehaviorType NewType);
 
-	void SetBlackboardBotType(EBotBehaviorType NewType);
+    /** Returns BehaviorComp subobject **/
+    FORCEINLINE UBehaviorTreeComponent* GetBehaviorComp() const
+    {
+        return BehaviorComp;
+    }
 
-	/** Returns BehaviorComp subobject **/
-	FORCEINLINE UBehaviorTreeComponent* GetBehaviorComp() const { return BehaviorComp; }
-
-	FORCEINLINE UBlackboardComponent* GetBlackboardComp() const { return BlackboardComp; }
+    FORCEINLINE UBlackboardComponent* GetBlackboardComp() const
+    {
+        return BlackboardComp;
+    }
 };

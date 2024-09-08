@@ -1,57 +1,44 @@
-# Notice: This project started back in 2015 and therefor uses *very old* standards and conventions. For an up-to-date Sample project I recommend my [Action Roguelike project](https://github.com/tomlooman/ActionRoguelike) instead!
+# Zombie Survival Game (UE 5.4 + StateTree Experiment)
 
-Survival Game (Example Project)
--------------------------
+This is a **fork** of the [EpicSurvivalGame](https://github.com/tomlooman/EpicSurvivalGame) project, originally developed by [Tom Looman](https://www.tomlooman.com). I have updated the project to work with **Unreal Engine 5.4**, and migrated the AI system from **Behavior Trees** to **StateTrees** for experimenting with the new system in Unreal Engine.
 
-Third-person survival game for Unreal Engine made entirely in C++. Originally built as a 6 section tutorial series for Epic Games, now available as open-source C++ sample project. 
+## Disclaimer
 
-Check out the **[main documentation page](https://www.tomlooman.com/unreal-engine-cpp-survival-sample-game/)** for walkthrough of many of the features. **Last updated for 5.2**
+This is my first Unreal Engine project, and I'm primarily using it to experiment with **StateTrees** and **Unreal Engine**. This project is **not** intended to be used as a production-ready example. It serves primarily as a sandbox for **learning** and **experimenting**. As such, you may encounter multiple approaches to similar tasks as I test and compare different methods. Treat this as a starting point, not as a reference for best practices.
 
-**Looking for a step-by-step Unreal Engine C++ Course?** Check out the **[Professional Game Development in C++ and Unreal Engine](https://courses.tomlooman.com/p/unrealengine-cpp?coupon_code=COMMUNITY15&src=github)** to learn all about C++ Game Programming with Unreal Engine! 
+## Key Changes
 
-The C++ Course features include building of a C++ game framework including an "action system" and event-driven code for flexible and re-usable game code the "unreal way". Multiplayer features, AI bots, SaveGame system, async loading of content, UMG menus and UI and so much more!
+- **Updated to UE 5.4**: The project has been made compatible with Unreal Engine 5.4.
+- **AI Migration**: The zombie AI has been migrated from Behavior Trees to StateTrees. This migration covers basic zombie AI behavior, such as patrolling, sensing, and attacking the player. The StateTrees use a custom StateTree Class/Schema, and StateTreeTasks are implemented in C++. The old AI is still part of the project and when Zombies are respawned it randomly selects between the old and new Zombie/AI.
 
+## Original Project Overview
 
-## Project Overview
+The original **EpicSurvivalGame** is a third-person survival game made entirely in C++, originally built as a tutorial series for Unreal Engine. It covers many aspects of C++ game development, including AI systems, multiplayer functionality, item systems, and more. For a detailed overview, see the [main documentation page](https://www.tomlooman.com/unreal-engine-cpp-survival-sample-game/).
 
-The C++ Course features include building of a C++ game framework including an "action system" and event-driven code for flexible and re-usable game code the "unreal way". Multiplayer features, AI bots, SaveGame system, async loading of content, UMG menus and UI and so much more!
+### Original Project Features
 
-![Refreshed look for Landscape Map](https://www.tomlooman.com/wp-content/uploads/2021/01/survivalgame_refresh_05.jpg)
+- Character movement with animations and networking support
+- Weapon systems, inventory, damage, and respawn mechanics
+- AI Zombie enemies (originally using Behavior Trees)
+- Full gameplay loop with items, scoring, and time of day
+- Multiplayer networking
 
-![equipment header](https://www.tomlooman.com/wp-content/uploads/2015/04/section6_equipment03.jpg)
+### Sections
 
-![animation blueprint graph example](https://www.tomlooman.com/wp-content/uploads/2015/04/section6_advancedanimbp031.jpg)
+- [Section 1: Character Movement, Interaction, Hunger System](https://www.tomlooman.com/survival-sample-game-for-ue4/section-one/)
+- [Section 2: Weapon Systems, Flashlight, Inventory, Damage, Respawn](https://www.tomlooman.com/survival-sample-game-for-ue4/section-two/)
+- [Section 3: AI "Zombie" Enemy with PawnSensing and Behavior Tree](https://www.tomlooman.com/survival-sample-game-for-ue4/section-three/)
+- [Section 4: Gameloop with Enemies, Items, Scoring, and Time of Day](https://nerivec.github.io/old-ue4-wiki/pages/survival-sample-game-section-4.html)
+- [Section 5: Object Carrying and Networking](https://nerivec.github.io/old-ue4-wiki/pages/survival-sample-game-section-5.html)
+- [Section 6: Bug Fixes and Polish](https://nerivec.github.io/old-ue4-wiki/pages/survival-sample-game-section-6.html)
 
-You can browse different Engine Versions by using the Branch Selection drop-down.
+## How to Use
 
-![GitHub Branch Selection Info](https://www.tomlooman.com/wp-content/uploads/2021/01/github_branchesinfo.jpg)
+1. Clone the repository to your local machine.
+2. Open the project in **Unreal Engine 5.4**.
+3. Compile the project in **Editor** or **Visual Studio**.
+4. Explore the changes in the AI logic for the Zombie, which now uses **StateTree** instead of the previous **Behavior Tree** system.
 
-### Section 1
-This section sets up the third person character movement with animation, object interaction, simple hunger system, all with networking support.
+## Credits
 
-- [Documentation page](https://www.tomlooman.com/survival-sample-game-for-ue4/section-one/)
-
-### Section 2
-Adds weapon support for the character, a flashlight, UT-style inventory with on-character visual representation of the carried items and deals with damage, death and respawns for players.
-
-- [Documentation page](https://www.tomlooman.com/survival-sample-game-for-ue4/section-two/)
-
-### Section 3
-Introduces AI "Zombie" enemy to our game using PawnSensing and Behavior Tree.
-
-- [Documentation page](https://www.tomlooman.com/survival-sample-game-for-ue4/section-three/)
-
-### Section 4
-Introduces a gameloop with enemies, items, scoring and a time of day.
-
-- [Documentation page](https://nerivec.github.io/old-ue4-wiki/pages/survival-sample-game-section-4.html)
-
-### Section 5
-Introduces the ability to carry around objects like barriers and discusses game networking.
-
-- [Documentation page](https://nerivec.github.io/old-ue4-wiki/pages/survival-sample-game-section-5.html)
-
-### Section 6
-The final section in the series focuses on bug fixing and a bit of polish to the existing features. This section is compatible with the 4.8 release.
-
-- [Documentation page](https://nerivec.github.io/old-ue4-wiki/pages/survival-sample-game-section-6.html)
+- Original Project: [Tom Looman](https://github.com/tomlooman/EpicSurvivalGame)

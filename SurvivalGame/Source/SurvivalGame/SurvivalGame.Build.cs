@@ -4,7 +4,7 @@ using UnrealBuildTool;
 
 public class SurvivalGame : ModuleRules
 {
-	public SurvivalGame(ReadOnlyTargetRules Target) : base(Target)
+    public SurvivalGame(ReadOnlyTargetRules Target) : base(Target)
     {
         /* AIModule is not assigned by default, must be added when dealing with AI in your project */
         PublicDependencyModuleNames.AddRange(new string[] {
@@ -13,13 +13,14 @@ public class SurvivalGame : ModuleRules
             "Engine",
             "InputCore",
             "AIModule",
-            /* Temporarily added GameplayTasks to workaround 4.12 compilation bug. */
-            "GameplayTasks",
             "NavigationSystem",
             "OnlineSubsystem", // For Steam
-            "PhysicsCore" // PhysicalMaterials
+            "PhysicsCore", // PhysicalMaterials
+            "GameplayTags",
+            "GameplayTasks",
+            "StateTreeModule",
         });
 
-        PrivateDependencyModuleNames.AddRange(new string[] {  });
-	}
+        PrivateDependencyModuleNames.AddRange(new string[] { });
+    }
 }

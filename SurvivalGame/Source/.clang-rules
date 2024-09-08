@@ -1,0 +1,46 @@
+Namespace: MYSTATETREE_FPS
+Rules:
+  # Disallow 'using namespace' outside of functions.
+- Name: using-namespace-in-namespace
+  Matcher: |
+    namespaceDecl(has(usingDirectiveDecl().bind("using_decl")))
+  ErrorMessage: |
+    'using namespace' outside of functions pollutes unqualified symbol name resolution
+  Callsite: using_decl
+  # Detects if a field in a class or struct is not initialized in the 
+  # constructor's initialization list when at least one member is initialized
+  # via the initializer list.
+- Name: field-not-initialized
+  Matcher: |
+    cxxConstructorDecl(
+      unless(isImplicit()),
+      unless(isDelegatingConstructor()),
+      unless(isDeleted()),
+      unless(isDefaulted()),
+      hasBody(stmt()),
+      unless(ofClass(cxxRecordDecl(isUClass()))),
+      unless(ofClass(cxxRecordDecl(isUInterface()))),
+      ofClass(cxxRecordDecl(forEach(fieldDecl().bind("declared_field")))),
+      forNone(cxxCtorInitializer(forField(fieldDecl(equalsBoundNode("declared_field")).bind("referenced_field"))))
+    ).bind("bad_constructor")
+  ErrorMessage: |
+    one or more fields will be uninitialized when class or struct is constructed; please add the field to the initializer list.
+  Callsite: bad_constructor
+  Hints:
+    declared_field: this field must be initialized
+  # Detects when a type must be exported. This is not enabled globally, but rather is enabled
+  # via additional .clang-rules files inside 'Public' folders.
+- Name: type-must-be-exported
+  Matcher: |
+    cxxRecordDecl(isMissingDllImportOrExport()).bind('decl')
+  ErrorMessage: |
+    expected '..._API' to mark this type as exported
+  Callsite: decl
+  WindowsOnly: true
+Rulesets:
+  # Ruleset for EOS Online Subsystem plugin.
+- Name: eos-online-subsystem
+  Severity: Error
+  Rules:
+  - using-namespace-in-namespace
+  - field-not-initialized
