@@ -1,6 +1,5 @@
 #pragma once
 
-#include "CoreMinimal.h"
 #include "StateTreeTaskBase.h"
 
 #include "STT_FindBotWaypoint.generated.h"

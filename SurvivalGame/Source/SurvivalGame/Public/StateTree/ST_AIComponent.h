@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Components/StateTreeComponent.h"
-#include "CoreMinimal.h"
 
 #include "ST_AIComponent.generated.h"
 

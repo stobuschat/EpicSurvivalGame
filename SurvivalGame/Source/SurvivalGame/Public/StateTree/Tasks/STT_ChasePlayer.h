@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Blueprint/StateTreeTaskBlueprintBase.h"
-#include "CoreMinimal.h"
 
 #include "STT_ChasePlayer.generated.h"
 

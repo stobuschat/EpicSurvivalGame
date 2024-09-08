@@ -1,6 +1,5 @@
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Player/SBaseCharacter.h"
 
 #include "SurvG_ZombieCharacter.generated.h"

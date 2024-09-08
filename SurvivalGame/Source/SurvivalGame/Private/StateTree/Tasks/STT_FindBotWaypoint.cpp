@@ -1,10 +1,11 @@
+#include "StateTree/Tasks/STT_FindBotWaypoint.h"
+
 #include "AI/SBotWaypoint.h"
 #include "BehaviorTree/BehaviorTreeComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "NavigationSystem.h"
-#include "StateTree/Tasks/STT_FindBotWaypoint.h"
 #include "StateTreeExecutionContext.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(STT_FindBotWaypoint)

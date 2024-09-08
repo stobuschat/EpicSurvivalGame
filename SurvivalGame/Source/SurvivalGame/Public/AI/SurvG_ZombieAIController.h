@@ -1,7 +1,6 @@
 #pragma once
 
 #include "AIController.h"
-#include "CoreMinimal.h"
 #include "SurvivalGame/Public/StateTree/ST_AIComponent.h"
 
 #include "SurvG_ZombieAIController.generated.h"
